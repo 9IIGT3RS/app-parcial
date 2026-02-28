@@ -1,0 +1,50 @@
+{
+  "success": true,
+  "data": [
+    {
+      "name": "abs"
+    },
+    {
+      "name": "adductors"
+    },
+    {
+      "name": "biceps"
+    },
+    {
+      "name": "calves"
+    },
+    {
+      "name": "delts"
+    },
+    {
+      "name": "forearms"
+    },
+    {
+      "name": "glutes"
+    },
+    {
+      "name": "hamstrings"
+    },
+    {
+      "name": "lats"
+    },
+    {
+      "name": "pectorals"
+    },
+    {
+      "name": "quads"
+    },
+    {
+      "name": "serratus anterior"
+    },
+    {
+      "name": "traps"
+    },
+    {
+      "name": "triceps"
+    },
+    {
+      "name": "upper back"
+    }
+  ]
+}
