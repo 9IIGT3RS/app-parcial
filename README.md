@@ -1,16 +1,72 @@
-# React + Vite
+🏋️‍♂️ PUMP_PLANNER – Descubre y planifica tus ejercicios
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada con React + Vite que permite explorar ejercicios, consultar sus detalles y crear un plan de entrenamiento personalizado que se guarda automáticamente en el navegador.
 
-Currently, two official plugins are available:
+🎯 Objetivo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+PumpPlanner - permite al usuario:
 
-## React Compiler
+Explorar ejercicios por grupo muscular.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Ver detalles técnicos de cada ejercicio.
 
-## Expanding the ESLint configuration
+Añadir ejercicios a un plan personalizado.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Guardar el plan incluso al recargar la página.
+
+🧠 Funcionamiento General
+
+La aplicación sigue una estructura clara basada en:
+
+Estado centralizado en App.jsx
+
+Flujo de datos unidireccional
+
+Componentes reutilizables
+
+Persistencia mediante localStorage
+
+El estado principal (el plan de ejercicios) vive en App.jsx y se pasa por props a las distintas páginas.
+Las páginas pueden añadir o eliminar ejercicios, pero la gestión real del estado siempre ocurre en el componente raíz.
+
+📂 Estructura Principal
+
+App.jsx → Componente raíz. Gestiona el estado global del plan.
+
+Home.jsx → Página principal con ejercicios destacados.
+
+Explorer.jsx → Explorador de ejercicios por músculo.
+
+MyPlan.jsx → Página que muestra el plan guardado.
+
+Navbar.jsx → Navegación con contador dinámico del plan.
+
+ExerciseCard.jsx → Tarjeta reutilizable para mostrar ejercicios.
+
+ExerciseModal.jsx → Modal con detalles completos.
+
+useLocalStorage.js → Hook personalizado para persistir el plan.
+
+🔄 Flujo de la aplicación
+
+Se cargan ejercicios desde una API externa.
+
+El usuario puede añadir ejercicios a su plan.
+
+El plan se guarda en localStorage.
+
+La información persiste aunque se recargue la página.
+
+🚀 Tecnologías
+
+React
+
+Vite
+
+React Router
+
+Bootstrap
+
+localStorage
+
+API externa de ejercicios
