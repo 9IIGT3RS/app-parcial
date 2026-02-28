@@ -47,26 +47,6 @@ ExerciseModal.jsx → Modal con detalles completos.
 
 useLocalStorage.js → Hook personalizado para persistir el plan.
 
-🔄 Flujo de la aplicación
 
-Se cargan ejercicios desde una API externa.
 
-El usuario puede añadir ejercicios a su plan.
 
-El plan se guarda en localStorage.
-
-La información persiste aunque se recargue la página.
-
-🚀 Tecnologías
-
-React
-
-Vite
-
-React Router
-
-Bootstrap
-
-localStorage
-
-API externa de ejercicios
