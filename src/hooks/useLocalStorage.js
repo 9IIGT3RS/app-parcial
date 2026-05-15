@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 //Para que el plan del usuario no se pierda al recargar la página.
 function useLocalStorage(key, initial) {
@@ -16,10 +16,10 @@ function useLocalStorage(key, initial) {
 
   // Esta función reemplaza al "setter" normal de useState
   // Guarda en el estado Y en localStorage al mismo tiempo
-  const setValueAndSave = (newValue) => {
+  const setValueAndSave = useCallback((newValue) => {
     setValue(newValue)
     localStorage.setItem(key, JSON.stringify(newValue))
-  }
+  }, [key])
 
   return [value, setValueAndSave]
 }

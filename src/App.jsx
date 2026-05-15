@@ -1,31 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import useLocalStorage from './hooks/useLocalStorage'
 import Navbar from './components/Navbar'
+import { AuthProvider } from './context/AuthContext'
+import usePlanState from './hooks/usePlanState'
 import Home from './pages/Home'
 import Explorer from './pages/Explorer'
 import MyPlan from './pages/MyPlan'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
-function App() {
-  // plan = array de ejercicios guardados por el usuario
-  // Persiste en localStorage con la clave 'fitplan-plan'
-  const [plan, setPlan] = useLocalStorage('fitplan-plan', [])
-
-  /**
-   * Añade un ejercicio al plan.
-   */
-  const addToPlan = (exercise) => {
-    const alreadyIn = plan.some((ex) => ex.exerciseId === exercise.exerciseId)
-    if (!alreadyIn) {
-      setPlan([...plan, exercise])
-    }
-  }
-
-  /**
-   * Elimina un ejercicio del plan.
-   */
-  const removeFromPlan = (exerciseId) => {
-    setPlan(plan.filter((ex) => ex.exerciseId !== exerciseId))
-  }
+function AppContent() {
+  const { plan, addToPlan, removeFromPlan, planLoading, planError } = usePlanState()
 
   return (
     <BrowserRouter>
@@ -33,6 +17,22 @@ function App() {
       <Navbar planCount={plan.length} />
 
       <main>
+        {planLoading && (
+          <div className="container pt-3">
+            <div className="alert alert-info mb-0" role="status">
+              Cargando tu plan...
+            </div>
+          </div>
+        )}
+
+        {planError && (
+          <div className="container pt-3">
+            <div className="alert alert-danger mb-0" role="alert">
+              {planError}
+            </div>
+          </div>
+        )}
+
         <Routes>
           {/* Home: muestra ejercicios destacados */}
           <Route path="/" element={<Home addToPlan={addToPlan} plan={plan} />} />
@@ -42,9 +42,20 @@ function App() {
 
           {/* MyPlan: muestra y gestiona el plan guardado */}
           <Route path="/mi-plan" element={<MyPlan plan={plan} removeFromPlan={removeFromPlan} />} />
+
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </main>
     </BrowserRouter>
+  )
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   )
 }
 

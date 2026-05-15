@@ -37,7 +37,7 @@ function ExerciseModal({ exercise, onClose, onAddToPlan, isInPlan }) {
 
                 {/* Músculos objetivo — puede ser targetMuscles o bodyParts según la API */}
                 <div className="mb-3">
-                  <h6 className="detail-label"><i class="fa-solid fa-dumbbell"></i>Músculo Principal</h6>
+                  <h6 className="detail-label"><i className="fa-solid fa-dumbbell"></i>Músculo Principal</h6>
                   <div className="d-flex flex-wrap gap-1">
                     {(exercise.targetMuscles?.length > 0
                       ? exercise.targetMuscles

@@ -1,23 +1,35 @@
-const BASE_URL = '/data'
+import { apiRequest } from '../api/client'
+
+function normalizeExerciseList(response) {
+  if (Array.isArray(response)) return response
+  if (Array.isArray(response?.data)) return response.data
+  return []
+}
+
+export async function getAllExercises() {
+  return normalizeExerciseList(await apiRequest('/api/exercises'))
+}
 
 export async function getExercises(limit = 6) {
-  const response = await fetch(`${BASE_URL}/exercises.json`)
-  const json = await response.json()
-  const all = json?.data ?? []
-  return all.slice(0, limit)   // simulamos el ?limit=
+  const all = await getAllExercises()
+  return all.slice(0, limit)
 }
 
 export async function getMuscles() {
-  const response = await fetch(`${BASE_URL}/muscles.json`)
-  const json = await response.json()
-  return json?.data ?? []
+  const exercises = await getAllExercises()
+  const names = new Set()
+
+  exercises.forEach((exercise) => {
+    exercise.targetMuscles?.forEach((muscle) => {
+      if (muscle) names.add(muscle)
+    })
+  })
+
+  return [...names].map((name) => ({ name }))
 }
 
 export async function getExercisesByMuscle(muscleName) {
-  const response = await fetch(`${BASE_URL}/exercises.json`)
-  const json = await response.json()
-  const all = json?.data ?? []
-  // Filtramos localmente por músculo en lugar de pedir otro endpoint
+  const all = await getAllExercises()
   return all.filter(ex =>
     ex.targetMuscles?.some(m => m.toLowerCase() === muscleName.toLowerCase()) ||
     ex.bodyParts?.some(m => m.toLowerCase() === muscleName.toLowerCase())

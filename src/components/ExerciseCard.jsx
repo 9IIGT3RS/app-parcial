@@ -22,7 +22,7 @@ function ExerciseCard({ exercise, onAddToPlan, onShowDetail, isInPlan }) {
           {/* Músculo principal */}
           <p className="card-text">
             <small className="text-muted text-capitalize">
-              <i class="fa-solid fa-dumbbell"></i> {exercise.targetMuscles?.[0] || 'Sin clasificar'}
+              <i className="fa-solid fa-dumbbell"></i> {exercise.targetMuscles?.[0] || 'Sin clasificar'}
             </small>
           </p>
 

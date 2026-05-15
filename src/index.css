@@ -417,6 +417,42 @@ body {
   line-height: 1.7;
 }
 
+/* AUTH */
+.auth-form {
+  max-width: 420px;
+  margin: 0 auto;
+  background: var(--dark-2);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.auth-form .form-label {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.auth-form .form-control {
+  background: var(--dark-3);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+}
+
+.auth-form .form-control:focus {
+  background: var(--dark-3);
+  border-color: var(--yellow);
+  color: var(--text);
+  box-shadow: 0 0 0 0.2rem rgba(245, 197, 24, 0.12);
+}
+
+.auth-switch {
+  color: var(--text-muted);
+}
+
+.auth-switch a {
+  color: var(--yellow);
+}
+
 /* BOTONES */
 .btn-warning {
   background-color: var(--yellow);

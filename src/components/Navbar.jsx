@@ -1,6 +1,9 @@
 import { Link, NavLink } from 'react-router-dom'
+import { useAuth } from '../context/authContextValue'
 
 function Navbar({ planCount }) {
+  const { user, isAuthenticated, logout } = useAuth()
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fitplan-navbar sticky-top">
       <div className="container">
@@ -48,6 +51,34 @@ function Navbar({ planCount }) {
                 )}
               </NavLink>
             </li>
+
+            {isAuthenticated ? (
+              <>
+                <li className="nav-item">
+                  <span className="nav-link disabled">
+                    {user?.name}
+                  </span>
+                </li>
+                <li className="nav-item">
+                  <button className="nav-link btn btn-link" type="button" onClick={logout}>
+                    Salir
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/login">
+                    Login
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/register">
+                    Registro
+                  </NavLink>
+                </li>
+              </>
+            )}
 
           </ul>
         </div>

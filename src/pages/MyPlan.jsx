@@ -58,7 +58,7 @@ function MyPlan({ plan, removeFromPlan }) {
                         {exercise.name}
                       </h6>
                       <p className="plan-muscle text-capitalize text-muted mb-0">
-                        <i class="fa-solid fa-dumbbell"></i> {exercise.targetMuscles?.[0] || 'Sin clasificar'}
+                        <i className="fa-solid fa-dumbbell"></i> {exercise.targetMuscles?.[0] || 'Sin clasificar'}
                       </p>
                     </div>
 
